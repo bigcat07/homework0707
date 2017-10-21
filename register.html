@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="JianShu.css">
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="box">
+    <div id="logo">
+        <a v-bind:href="wangzhi">
+            <img v-bind:src="src">
+        </a>
+    </div>
+    <div id="form">
+        <div id="sign">
+            <div>
+                <a v-bind:href="sign_in" id="login">登录</a>
+            </div>
+            <div id="point">.</div>
+            <div>
+                <a v-bind:href="sign_up" id="register">注册</a>
+            </div>
+        </div>
+
+        <div id="ee">
+            <input type="text" id="user" class="login" placeholder="你的昵称">
+            <input type="text" id="phone-number" class="login" placeholder="手机号">
+            <input type="password" id="pass" class="login" placeholder="设置密码">
+        </div>
+
+        <!--注册-->
+        <input type="submit" id="zc" value="注册" class="show">
+        <p id="clause">点击'注册'即表示您同意并愿意遵守简书
+            <a href="">服务协议</a>
+            和
+            <a href="">隐私政策</a>
+        </p>
+
+        <!--更多登录方式-->
+        <div id="more-login">
+            <h6>社交账号直接注册</h6>
+            <ul>
+                <li>
+                    <a href="">
+                        <img v-bind:src="xinlang" alt="">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <img v-bind:src="weixin" alt="">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <img v-bind:src="qq" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+</div>
+<script>
+    var vm = new Vue({
+        el:'#box',
+        data:{
+            wangzhi:'http://www.jianshu.com',
+            src:'img/logo.png',
+            sign_in:'login.html',
+            sign_up:'register.html',
+            isShow:false,
+            color:'red',
+            xinlang:'img/新浪微博.png',
+            weixin:'img/微信.png',
+            qq:'img/QQ.png',
+            phoneNumber:'img/手机号.png'
+        },
+        methods:{
+            toggle:function () {
+                this.isShow = !this.isShow
+            }
+        }
+    })
+</script>
+</body>
+</html>

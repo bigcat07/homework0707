@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="JianShu.css">
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="box">
+    <div id="logo">
+        <a v-bind:href="wangzhi">
+            <img v-bind:src="src">
+        </a>
+    </div>
+    <div id="form">
+        <div id="sign">
+            <div>
+                <a v-bind:href="sign_in" id="login1">登录</a>
+            </div>
+            <div id="point">.</div>
+            <div>
+                <a v-bind:href="sign_up" id="register1">注册</a>
+            </div>
+        </div>
+
+        <div id="ee">
+            <input type="text" id="user" class="login" placeholder="手机号或邮箱">
+            <input type="password" id="pass" class="login" placeholder="请输入密码">
+        </div>
+
+        <button id="tijiao">点击按钮进行验证 
+            <a href="http://www.geetest.com/index" target="_blank">
+                <img src="img/链接.png" alt="">        
+            </a>
+        </button>
+        <!--记住我-->
+        <div id="remeber">
+            <input type="checkbox">记住我
+            <p v-on:click="toggle">登录遇到问题?</p>
+            <ul id="list" v-show="isShow">
+                <li v-on:click="phone">用手机号重置密码</li>
+                <li>用邮箱重置密码</li>
+                <li>无法用海外手机号登录</li>
+                <li>无法用Google账号登录</li>
+            </ul>
+        </div>
+
+        <!--登录-->
+        <input type="submit" id="dl" value="登录" class="show">
+
+        <!--更多登录方式-->
+        <div id="more-login">
+           <h6>更多登录方式</h6>
+            <ul>
+                <li>
+                    <a href="">
+                        <img v-bind:src="xinlang" alt="">
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="">
+                        <img v-bind:src="weixin" alt="">
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="">
+                        <img v-bind:src="qq" alt="">
+                    </a>
+                </li>
+                
+                <li>
+                    <!--<a href="">-->
+                        <img v-bind:src="douban" v-on:click="tupian">
+                    <!--</a>-->
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<script>
+    var count = 0
+    var vm = new Vue({
+        el:'#box',
+        data:{
+            wangzhi:'http://www.jianshu.com',
+            src:'img/logo.png',
+            sign_in:'login.html',
+            sign_up:'register.html',
+            isShow:false,
+            color:'red',
+            xinlang:'img/新浪微博.png',
+            weixin:'img/微信.png',
+            qq:'img/QQ.png',
+            douban:'img/其他.png'
+        },
+        methods: {
+            toggle:function () {
+                this.isShow = !this.isShow
+            },
+            tupian:function () {
+                this.douban = 'img/豆瓣.png'
+                count++
+                if (count > 1) {
+                    window.location.href='https://www.douban.com/service/auth2/auth?client_id=07b4f47aa74e2448171edd6ff5ea6cd8&redirect_uri=http%3A%2F%2Fwww.jianshu.com%2Fusers%2Fauth%2Fdouban%2Fcallback&response_type=code&scope=douban_basic_common%2Cshuo_' +
+                            'basic_r%2Cshuo_basic_w&state=8c872db2d9e1f1c2dbc3fe3e92af55bd1c115a145c3eadcf'
+                }
+            },
+            phone:function () {
+                window.location.href = 'forget.html'
+            }
+        }
+    })
+</script>
+</body>
+</html>

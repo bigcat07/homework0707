@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="forget.css">
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="box">
+    <div id="logo">
+        <a v-bind:href="wangzhi">
+            <img v-bind:src="src">
+        </a>
+    </div>
+
+    <!--忘记密码-->
+    <div id="form">
+        <p class="title">用手机号重置密码</p>
+        <div id="chongzhi">
+            <p id="phone-number">+86</p>
+            <input type="text" id="phone" placeholder="手机号">
+            <ul v-for="value in locationArr"><li>{{value.name}}&nbsp&nbsp{{value.location}}</li></ul>
+        </div>
+
+    </div>
+</div>
+<script>
+    var vm = new Vue({
+        el:'#box',
+        data:{
+            src:'img/logo.png',
+            wangzhi:'http://www.jianshu.com',
+            locationArr:[
+                {
+                    name:'+61',
+                    location:'澳大利亚'
+                },
+                {
+                    name:'+33',
+                    location:'法国'
+                },
+                {
+                    name:'+49',
+                    location:'德国'
+                },
+                {
+                    name:'+852',
+                    location:'中国香港'
+                },
+                {
+                    name:'+81',
+                    location:'日本'
+                }
+
+            ]
+        }
+    })
+</script>
+</body>
+</html>
